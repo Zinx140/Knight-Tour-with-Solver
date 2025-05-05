@@ -17,24 +17,28 @@ public class GamePanel {
 
     public void draw(int[][] chess) {
         System.out.print(" =");
-        for (int i = 0; i < chess.length * 3 + chess.length; i++) {
+        for (int i = 0; i < chess.length * 4 + chess.length; i++) {
             System.out.print("=");
         }
         System.out.println();
         for (int i = 0; i < chess.length; i++) {
             for (int j = 0; j < chess[i].length; j++) {
                 if (chess[i][j] == 0) {
-                    System.out.print(" | " + " ");
+                    System.out.print(" | " + "  ");
                 } else if (chess[i][j] == -10) {
-                    System.out.print(" | K");
+                    System.out.print(" | K ");
                 } else {
-                    System.out.print(" | " + chess[i][j]);
+                    if (chess[i][j] < 10) {
+                        System.out.print(" | " + chess[i][j] + " ");
+                    } else {
+                        System.out.print(" | " + chess[i][j]);
+                    }
                 }
 
             }
             System.out.println(" |");
             System.out.print(" =");
-            for (int j = 0; j < chess.length * 3 + chess.length; j++) {
+            for (int j = 0; j < chess.length * 4 + chess.length; j++) {
                 System.out.print("=");
             }
             System.out.println();
@@ -44,10 +48,6 @@ public class GamePanel {
     public void setup() {
         int size = 0;
         System.out.println("Welcome to Knight Tour! ");
-        System.out.println("This is a game where you can play the knight tour on a chessboard.");
-        System.out.println("You can choose the size of the chessboard and the starting position of the knight.");
-        System.out.println("You can also choose the number of moves you want to make.");
-        System.out.println("You can also choose the number of moves you want to make.");
         do {
             System.out.print("Enter the size of the chessboard: ");
             size = getInt.nextInt();
