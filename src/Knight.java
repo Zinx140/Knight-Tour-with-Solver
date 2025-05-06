@@ -1,4 +1,4 @@
-public class Knight {
+public class Knight implements Cloneable {
     int x, y;
 
     public Knight() {
@@ -7,6 +7,9 @@ public class Knight {
     }
 
     public void move(int option, int[][] map, int level) {
+        int tempX = x;
+        int tempY = y;
+        map[tempY][tempX] = (level + 1);
         switch (option) {
             case 1:
                 map[y - 1][x - 2] = -10;
@@ -113,4 +116,14 @@ public class Knight {
         }
         return flag;
     }
+
+    @Override
+    public Knight clone() {
+        try {
+            return (Knight) super.clone(); // cast Object to Knight
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(); // should not happen
+        }
+    }
+    
 }
