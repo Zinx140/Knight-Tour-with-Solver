@@ -161,29 +161,39 @@ public class GamePanel extends JFrame implements MouseListener {
     public void startGame(int[][] chess) {
         System.out.println("The game has started!");
         System.out.println("You can choose the starting position of the knight.");
-        int option = 0;
-        Knight knight = new Knight();
+        int option = 0, x = 0, y = 0;
+        draw(chess);
+        System.out.println("Select start position: ");
+        do {
+            System.out.print("select posX: "); 
+            x = getInt.nextInt();
+        } while (x < 0 || x > chess.length - 1);
+        do {
+            System.out.print("select posY: "); 
+            y = getInt.nextInt();
+        } while (y < 0 || y > chess.length - 1);
+        Knight knight = new Knight(x, y);
         chess[knight.y][knight.x] = -10;
-        // for (int i = 0; i < chess.length * chess.length; i++) {
+        for (int i = 0; i < chess.length * chess.length; i++) {
             draw(chess);
-            // do {
-            //     System.out.print("Choose option to move (0 - 8): ");
-            //     option = getInt.nextInt();
-            // } while (!knight.canMove(option, chess) && option != 9);
-            solve(chess, knight, 0);
-            for (int[][] arr : solutions) {
-                System.out.println("solutions : ");
-                draw(arr);
+            System.out.println("Select 9 to Autosolve!");
+            do {
+                System.out.print("Choose option to move (0 - 8): ");
+                option = getInt.nextInt();
+            } while (!knight.canMove(option, chess) && option != 9);
+            if (option != 9) {
+                knight.move(option, chess, i);
+            } else {
+                solve(chess, knight, i);
+                break;
             }
             
-            // knight.move(option, chess, i);
-
             if (!knight.canMove(1, chess) && !knight.canMove(2, chess) && !knight.canMove(3, chess) 
-                && !knight.canMove(4, chess) && !knight.canMove(5, chess) && !knight.canMove(6, chess) 
-                && !knight.canMove(7, chess) && !knight.canMove(8, chess)) {
+            && !knight.canMove(4, chess) && !knight.canMove(5, chess) && !knight.canMove(6, chess) 
+            && !knight.canMove(7, chess) && !knight.canMove(8, chess)) {
                 System.out.println("Game Over");
             }
-        // }
+        }
     }
 
 }

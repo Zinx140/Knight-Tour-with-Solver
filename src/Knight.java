@@ -1,9 +1,9 @@
 public class Knight implements Cloneable {
     int x, y;
 
-    public Knight() {
-        this.x = 0;
-        this.y = 0;
+    public Knight(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void move(int option, int[][] map, int level) {
