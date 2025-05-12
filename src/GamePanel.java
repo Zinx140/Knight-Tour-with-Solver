@@ -161,7 +161,6 @@ public class GamePanel extends JFrame implements MouseListener {
     public void startGame(int[][] chess) {
         System.out.println("The game has started!");
         System.out.println("You can choose the starting position of the knight.");
-        int option = 0;
         Knight knight = new Knight();
         chess[knight.y][knight.x] = -10;
         // for (int i = 0; i < chess.length * chess.length; i++) {
