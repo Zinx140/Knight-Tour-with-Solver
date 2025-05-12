@@ -44,10 +44,6 @@ public class GamePanel {
     public void setup() {
         int size = 0;
         System.out.println("Welcome to Knight Tour! ");
-        System.out.println("This is a game where you can play the knight tour on a chessboard.");
-        System.out.println("You can choose the size of the chessboard and the starting position of the knight.");
-        System.out.println("You can also choose the number of moves you want to make.");
-        System.out.println("You can also choose the number of moves you want to make.");
         do {
             System.out.print("Enter the size of the chessboard: ");
             size = getInt.nextInt();
